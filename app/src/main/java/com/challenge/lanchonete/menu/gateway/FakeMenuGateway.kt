@@ -8,7 +8,7 @@ class FakeMenuGateway : MenuGateway {
         val sandwiches = mutableListOf<Sandwich>()
 
         val cheese = Ingredient(1, "cheese", 1.0)
-        val sandwich = Sandwich(1, listOf(cheese), 1.0)
+        val sandwich = Sandwich(1, "teste_saand", listOf(cheese), 1.0)
         sandwiches.add(sandwich)
 
         return sandwiches

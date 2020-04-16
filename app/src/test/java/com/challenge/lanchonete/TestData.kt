@@ -28,16 +28,19 @@ class TestData {
         val LIST_OF_SANDWICHES = listOf(
             Sandwich(
                 1,
+                "Sand 1",
                 LIST_OF_INGREDIENTS,
                 3.00
             ),
             Sandwich(
                 2,
+                "Sand 2",
                 LIST_OF_INGREDIENTS.subList(0, 1),
                 4.00
             ),
             Sandwich(
                 3,
+                "Sand 3",
                 LIST_OF_INGREDIENTS.subList(1, 2),
                 5.00
             )
