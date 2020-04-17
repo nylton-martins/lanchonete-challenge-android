@@ -23,7 +23,7 @@ class MenuPresenterTest {
         presenter.onStateUpdate(State(State.Name.LOADED, sandwiches))
 
         verifySequence {
-            viewMock.hideError()
+            viewMock.hideErrors()
             viewMock.hideLoading()
             viewMock.showSandwiches(
                 MenuListViewModel(
@@ -44,7 +44,7 @@ class MenuPresenterTest {
         presenter.onStateUpdate(State(State.Name.LOADING))
 
         verifySequence {
-            viewMock.hideError()
+            viewMock.hideErrors()
             viewMock.hideSandwiches()
             viewMock.showLoading()
         }
@@ -61,10 +61,10 @@ class MenuPresenterTest {
         presenter.onStateUpdate(State(State.Name.LOADED, emptyList()))
 
         verifySequence {
-            viewMock.hideError()
+            viewMock.hideErrors()
             viewMock.hideLoading()
             viewMock.hideSandwiches()
-            viewMock.showNoSandwiches()
+            viewMock.showNoSandwichesError()
         }
     }
 
@@ -81,7 +81,7 @@ class MenuPresenterTest {
         verifySequence {
             viewMock.hideSandwiches()
             viewMock.hideLoading()
-            viewMock.showError()
+            viewMock.showUnknownError()
         }
     }
 }

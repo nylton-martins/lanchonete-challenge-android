@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lanchonete</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="no_sandwiches_error">No Sandwiches Available</string>
 </resources>

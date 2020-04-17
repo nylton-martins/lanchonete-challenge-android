@@ -15,13 +15,13 @@ class MenuPresenter(
 
             when (state.name) {
                 State.Name.IDLE, State.Name.LOADING -> {
-                    view.hideError()
+                    view.hideErrors()
                     view.hideSandwiches()
                     view.showLoading()
                 }
                 State.Name.LOADED -> {
                     val sandwiches = state.value!!
-                    view.hideError()
+                    view.hideErrors()
                     view.hideLoading()
                     if (sandwiches.isNotEmpty()) {
                         view.showSandwiches(
@@ -31,13 +31,13 @@ class MenuPresenter(
                         )
                     } else {
                         view.hideSandwiches()
-                        view.showNoSandwiches()
+                        view.showNoSandwichesError()
                     }
                 }
                 State.Name.ERROR -> {
                     view.hideSandwiches()
                     view.hideLoading()
-                    view.showError()
+                    view.showUnknownError()
                 }
             }
         }

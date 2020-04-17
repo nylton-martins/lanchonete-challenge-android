@@ -6,8 +6,8 @@ interface MenuView {
     fun showSandwiches(menuListViewModel: MenuListViewModel)
     fun showLoading()
     fun hideLoading()
-    fun hideError()
-    fun showError()
-    fun showNoSandwiches()
+    fun showUnknownError()
+    fun showNoSandwichesError()
+    fun hideErrors()
     fun hideSandwiches()
 }

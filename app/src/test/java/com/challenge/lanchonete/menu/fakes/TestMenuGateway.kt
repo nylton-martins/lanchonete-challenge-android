@@ -1,4 +1,4 @@
-package com.challenge.lanchonete.menu
+package com.challenge.lanchonete.menu.fakes
 
 import com.challenge.lanchonete.menu.gateway.MenuGateway
 import com.challenge.lanchonete.models.Sandwich
