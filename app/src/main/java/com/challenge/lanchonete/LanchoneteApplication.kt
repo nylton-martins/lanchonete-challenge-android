@@ -1,6 +1,9 @@
 package com.challenge.lanchonete
 
 import android.app.Application
+import com.challenge.lanchonete.createsandwich.CreateSandwichManager
+import com.challenge.lanchonete.createsandwich.LanchoneteCreateSandwichManager
+import com.challenge.lanchonete.createsandwich.gateway.FakeIngredientsGateway
 import com.challenge.lanchonete.menu.LanchoneteMenuManager
 import com.challenge.lanchonete.menu.MenuManager
 import com.challenge.lanchonete.menu.gateway.FakeMenuGateway
@@ -24,6 +27,14 @@ class LanchoneteApplication : Application(),
         LanchoneteMenuManager(
             mainDispatcher,
             FakeMenuGateway(),
+            errorFactory
+        )
+    }
+
+    override val createSandwichManager: CreateSandwichManager by lazy {
+        LanchoneteCreateSandwichManager(
+            mainDispatcher,
+            FakeIngredientsGateway(),
             errorFactory
         )
     }
