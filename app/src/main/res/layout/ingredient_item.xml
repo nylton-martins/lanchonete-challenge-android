@@ -7,7 +7,7 @@
     android:padding="8dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sandwichName"
+        android:id="@+id/ingredientName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,27 +15,40 @@
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        tools:text="Cheese Sandwiche"/>
+        tools:text="Cheese"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sandwichIngredients"
+        android:id="@+id/ingredientValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sandwichName"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientName"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
-        tools:text="Cheese, Egg, Bacon"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sandwichPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@android:color/black"
         android:textSize="14sp"
-        android:textStyle="bold"
         tools:text="0.5$"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ingredientQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/increaseIngredient"
+        android:layout_margin="4dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:text="0"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/increaseIngredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/round_add_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

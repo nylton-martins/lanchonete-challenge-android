@@ -2,13 +2,15 @@ package com.challenge.lanchonete
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.challenge.lanchonete.createsandwich.CreateSandwichManager
+import com.challenge.lanchonete.createsandwich.CreateSandwichViewContainer
 import com.challenge.lanchonete.menu.MenuManager
 import com.challenge.lanchonete.menu.MenuViewContainer
 import com.challenge.lanchonete.navigator.LanchoneteNavigator
 import com.challenge.lanchonete.navigator.Navigator
 import com.challenge.lanchonete.state.Dispatcher
 
-class MainActivity : AppCompatActivity(), MenuViewContainer {
+class MainActivity : AppCompatActivity(), MenuViewContainer, CreateSandwichViewContainer {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,10 @@ class MainActivity : AppCompatActivity(), MenuViewContainer {
 
     override val menuManager: MenuManager by lazy {
         (applicationContext as DependencyManager).menuManager
+    }
+
+    override val createSandwichManager: CreateSandwichManager by lazy {
+        (applicationContext as DependencyManager).createSandwichManager
     }
 
     override val navigator: Navigator by lazy {
