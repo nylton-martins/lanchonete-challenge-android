@@ -55,5 +55,6 @@ class LanchoneteApplication : Application(),
         super.onCreate()
 
         menuManager.setup()
+        createSandwichManager.loadIngredients()
     }
 }

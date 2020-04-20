@@ -37,6 +37,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${jetpackAppCompatVersion}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
     implementation "androidx.recyclerview:recyclerview:${androidJetpackRecyclerViewVersion}"
+    implementation "com.google.android.material:material:${androidJetpackVersion}"
     implementation "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
     implementation "io.reactivex.rxjava2:rxandroid:${rxJavaAndroidVersion}"
 

@@ -28,8 +28,18 @@ class MenuFragment : Fragment(), MenuView {
         container!!.mainDispatcher
     }
 
+    private val navigator by lazy {
+        container!!.navigator
+    }
+
     private val menuListener by lazy {
         MenuPresenter(this, mainDispatcher)
+    }
+
+    private val createSandwichListener by lazy {
+        View.OnClickListener {
+            navigator.navigateToCreateSandwichView()
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -59,10 +69,12 @@ class MenuFragment : Fragment(), MenuView {
     override fun onResume() {
         super.onResume()
         menuManager.registerListener(menuListener)
+        createSandwichButton.setOnClickListener(createSandwichListener)
     }
 
     override fun onPause() {
         menuManager.unregisterListener(menuListener)
+        createSandwichButton.setOnClickListener(null)
         super.onPause()
     }
 
