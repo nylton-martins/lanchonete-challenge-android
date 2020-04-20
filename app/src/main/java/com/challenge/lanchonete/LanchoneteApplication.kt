@@ -1,6 +1,8 @@
 package com.challenge.lanchonete
 
 import android.app.Application
+import com.challenge.lanchonete.calculatepromotion.LanchonetePromotionManager
+import com.challenge.lanchonete.calculatepromotion.PromotionManager
 import com.challenge.lanchonete.createsandwich.CreateSandwichManager
 import com.challenge.lanchonete.createsandwich.LanchoneteCreateSandwichManager
 import com.challenge.lanchonete.createsandwich.gateway.FakeIngredientsGateway
@@ -35,6 +37,13 @@ class LanchoneteApplication : Application(),
         LanchoneteCreateSandwichManager(
             mainDispatcher,
             FakeIngredientsGateway(),
+            errorFactory
+        )
+    }
+
+    override val promotionManager: PromotionManager by lazy {
+        LanchonetePromotionManager(
+            mainDispatcher,
             errorFactory
         )
     }

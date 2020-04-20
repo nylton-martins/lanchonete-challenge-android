@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.challenge.lanchonete.R
 import com.challenge.lanchonete.createsandwich.list.CreateSandwichAdapter
-import com.challenge.lanchonete.createsandwich.list.IngredientListViewModel
+import com.challenge.lanchonete.models.Ingredient
 import kotlinx.android.synthetic.main.fragment_create_sandwich.*
 
 class CreateSandwichFragment : Fragment(), CreateSandwichView {
@@ -32,8 +32,24 @@ class CreateSandwichFragment : Fragment(), CreateSandwichView {
         container!!.navigator
     }
 
+    private val promotionManager by lazy {
+        container!!.promotionManager
+    }
+
     private val createSandwichListener by lazy {
         CreateSandwichPresenter(this, mainDispatcher)
+    }
+
+    private val calculatePromotionListener by lazy {
+        CalculatePromotionPresenter(this, mainDispatcher)
+    }
+
+    private val onIngredientClickListener by lazy {
+        object : CreateSandwichAdapter.OnClickListener {
+            override fun onClick(ingredient: Ingredient) {
+                promotionManager.calculateSandwichPrice(ingredient)
+            }
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -63,10 +79,13 @@ class CreateSandwichFragment : Fragment(), CreateSandwichView {
     override fun onResume() {
         super.onResume()
         createSandwichManager.registerListener(createSandwichListener)
+        promotionManager.registerListener(calculatePromotionListener)
+        createSandwichAdapter!!.clickListener = onIngredientClickListener
     }
 
     override fun onPause() {
         createSandwichManager.unregisterListener(createSandwichListener)
+        promotionManager.unregisterListener(calculatePromotionListener)
         super.onPause()
     }
 
@@ -81,9 +100,9 @@ class CreateSandwichFragment : Fragment(), CreateSandwichView {
         super.onDetach()
     }
 
-    override fun showIngredients(ingredientListViewModel: IngredientListViewModel) {
+    override fun showIngredients(ingredients: List<Ingredient>) {
         ingredientsList.visibility = VISIBLE
-        createSandwichAdapter!!.setIngredients(ingredientListViewModel.list)
+        createSandwichAdapter!!.setIngredients(ingredients)
     }
 
     override fun hideIngredients() {
@@ -110,5 +129,14 @@ class CreateSandwichFragment : Fragment(), CreateSandwichView {
 
     override fun hideErrors() {
         errorView.visibility = GONE
+    }
+
+    override fun hidePrice() {
+        priceViews.visibility = GONE
+    }
+
+    override fun showPrice(price: Double) {
+        priceViews.visibility = VISIBLE
+        priceValue.text = "$price$"
     }
 }

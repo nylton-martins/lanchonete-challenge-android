@@ -1,7 +1,6 @@
 package com.challenge.lanchonete.createsandwich
 
 import com.challenge.lanchonete.TestData
-import com.challenge.lanchonete.createsandwich.list.IngredientListViewModel
 import com.challenge.lanchonete.rxjava.RxJavaDispatcher
 import com.challenge.lanchonete.state.State
 import io.mockk.mockk
@@ -25,6 +24,7 @@ class CreateSandwichPresenterTest {
         verifySequence {
             viewMock.hideErrors()
             viewMock.hideLoading()
+            viewMock.showPrice()
             viewMock.showIngredients(
                 IngredientListViewModel(
                     ingredients
@@ -46,6 +46,7 @@ class CreateSandwichPresenterTest {
         verifySequence {
             viewMock.hideErrors()
             viewMock.hideIngredients()
+            viewMock.hidePrice()
             viewMock.showLoading()
         }
     }
@@ -64,6 +65,7 @@ class CreateSandwichPresenterTest {
             viewMock.hideErrors()
             viewMock.hideLoading()
             viewMock.hideIngredients()
+            viewMock.hidePrice()
             viewMock.showNoIngredientsError()
         }
     }
@@ -81,6 +83,7 @@ class CreateSandwichPresenterTest {
         verifySequence {
             viewMock.hideIngredients()
             viewMock.hideLoading()
+            viewMock.hidePrice()
             viewMock.showUnknownError()
         }
     }

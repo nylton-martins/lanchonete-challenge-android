@@ -1,6 +1,5 @@
 package com.challenge.lanchonete.createsandwich
 
-import com.challenge.lanchonete.createsandwich.list.IngredientListViewModel
 import com.challenge.lanchonete.models.Ingredient
 import com.challenge.lanchonete.state.Dispatcher
 import com.challenge.lanchonete.state.State
@@ -17,6 +16,7 @@ class CreateSandwichPresenter(
                 State.Name.IDLE, State.Name.LOADING -> {
                     view.hideErrors()
                     view.hideIngredients()
+                    view.hidePrice()
                     view.showLoading()
                 }
                 State.Name.LOADED -> {
@@ -24,19 +24,20 @@ class CreateSandwichPresenter(
                     view.hideErrors()
                     view.hideLoading()
                     if (ingredients.isNotEmpty()) {
+                        view.showPrice(0.0)
                         view.showIngredients(
-                            IngredientListViewModel(
-                                ingredients
-                            )
+                            ingredients
                         )
                     } else {
                         view.hideIngredients()
+                        view.hidePrice()
                         view.showNoIngredientsError()
                     }
                 }
                 State.Name.ERROR -> {
                     view.hideIngredients()
                     view.hideLoading()
+                    view.hidePrice()
                     view.showUnknownError()
                 }
             }

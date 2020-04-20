@@ -2,6 +2,7 @@ package com.challenge.lanchonete
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.challenge.lanchonete.calculatepromotion.PromotionManager
 import com.challenge.lanchonete.createsandwich.CreateSandwichManager
 import com.challenge.lanchonete.createsandwich.CreateSandwichViewContainer
 import com.challenge.lanchonete.menu.MenuManager
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity(), MenuViewContainer, CreateSandwichViewC
 
     override val createSandwichManager: CreateSandwichManager by lazy {
         (applicationContext as DependencyManager).createSandwichManager
+    }
+
+    override val promotionManager: PromotionManager by lazy {
+        (applicationContext as DependencyManager).promotionManager
     }
 
     override val navigator: Navigator by lazy {

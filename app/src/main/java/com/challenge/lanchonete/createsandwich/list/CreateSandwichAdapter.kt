@@ -4,11 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.challenge.lanchonete.R
+import com.challenge.lanchonete.models.Ingredient
 
 class CreateSandwichAdapter(
     private val inflater: LayoutInflater
 ) : RecyclerView.Adapter<CreateSandwichViewHolder>() {
-    private val items: MutableList<IngredientItemViewModel> = mutableListOf()
+
+    var clickListener: OnClickListener? = null
+
+    private val items: MutableList<Ingredient> = mutableListOf()
 
     override fun getItemCount() = items.size
 
@@ -16,7 +20,8 @@ class CreateSandwichAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CreateSandwichViewHolder {
         return CreateSandwichViewHolder(
-            inflater.inflate(viewType, parent, false)
+            inflater.inflate(viewType, parent, false),
+            clickListener
         )
     }
 
@@ -24,9 +29,13 @@ class CreateSandwichAdapter(
         holder.setIngredient(items[position])
     }
 
-    fun setIngredients(ingredientItems: List<IngredientItemViewModel>) {
+    fun setIngredients(ingredientItems: List<Ingredient>) {
         items.clear()
         items.addAll(ingredientItems)
         notifyDataSetChanged()
+    }
+
+    interface OnClickListener {
+        fun onClick(ingredient: Ingredient)
     }
 }

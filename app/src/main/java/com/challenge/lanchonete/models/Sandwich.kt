@@ -3,7 +3,7 @@ package com.challenge.lanchonete.models
 data class Sandwich(
     val id: Int,
     val name: String,
-    val ingredients: List<Ingredient> = emptyList(),
+    var ingredients: MutableList<Ingredient> = mutableListOf(),
     var price: Double = 0.0
 ) {
     fun calculatePrice() {
@@ -13,6 +13,7 @@ data class Sandwich(
         var countOfCheese = 0
         var valueOfBurger = 0.0
         var valueOfCheese = 0.0
+        price = 0.0
 
         ingredients.forEach {
             when (it.name) {
