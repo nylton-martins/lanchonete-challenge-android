@@ -5,7 +5,7 @@ import kotlin.math.round
 data class Sandwich(
     val id: Int,
     val name: String,
-    var ingredients: MutableList<Ingredient> = mutableListOf(),
+    var ingredients: LinkedHashMap<Int, Ingredient> = linkedMapOf(),
     var price: Double = 0.0
 ) {
     fun calculatePrice() {
@@ -17,21 +17,21 @@ data class Sandwich(
         var valueOfCheese = 0.0
         price = 0.0
 
-        ingredients.forEach {
+        ingredients.values.forEach {
             when (it.name) {
                 "Lettuce" -> hasLettuce = true
                 "Bacon" -> hasBacon = true
                 "Meat Hamburger" -> {
-                    countOfBurgers++
+                    countOfBurgers = it.quantity
                     valueOfBurger = it.value
                 }
                 "Cheese" -> {
-                    countOfCheese++
+                    countOfCheese = it.quantity
                     valueOfCheese = it.value
                 }
             }
 
-            price += it.value
+            price += (it.value * it.quantity)
         }
 
         var biggestPromotion = 0.0

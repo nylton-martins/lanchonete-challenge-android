@@ -8,7 +8,7 @@ import com.challenge.lanchonete.state.State
 
 class FakePromotionManager(
     currentState: State<Sandwich> = State(State.Name.LOADED, Sandwich(0, "")),
-    private val sandwich: Sandwich = Sandwich(0, "", mutableListOf(), 5.0)
+    private val sandwich: Sandwich = Sandwich(0, "", linkedMapOf(), 5.0)
 ) :
     PromotionManager(
         FakeErrorFactory(),

@@ -11,17 +11,20 @@ class TestData {
             Ingredient(
                 1,
                 "Cheese",
-                1.50
+                1.50,
+                1
             ),
             Ingredient(
                 2,
                 "Egg",
-                0.80
+                0.80,
+                1
             ),
             Ingredient(
                 3,
                 "Bacon",
-                2.00
+                2.00,
+                1
             )
         )
 
@@ -29,19 +32,29 @@ class TestData {
             Sandwich(
                 1,
                 "Sand 1",
-                LIST_OF_INGREDIENTS,
+                linkedMapOf(
+                    Pair(LIST_OF_INGREDIENTS[0].id, LIST_OF_INGREDIENTS[0]),
+                    Pair(LIST_OF_INGREDIENTS[1].id, LIST_OF_INGREDIENTS[1]),
+                    Pair(LIST_OF_INGREDIENTS[2].id, LIST_OF_INGREDIENTS[2])
+                ),
                 3.00
             ),
             Sandwich(
                 2,
                 "Sand 2",
-                LIST_OF_INGREDIENTS.subList(0, 1),
+                linkedMapOf(
+                    Pair(LIST_OF_INGREDIENTS[0].id, LIST_OF_INGREDIENTS[0]),
+                    Pair(LIST_OF_INGREDIENTS[1].id, LIST_OF_INGREDIENTS[1])
+                ),
                 4.00
             ),
             Sandwich(
                 3,
                 "Sand 3",
-                LIST_OF_INGREDIENTS.subList(1, 2),
+                linkedMapOf(
+                    Pair(LIST_OF_INGREDIENTS[1].id, LIST_OF_INGREDIENTS[1]),
+                    Pair(LIST_OF_INGREDIENTS[2].id, LIST_OF_INGREDIENTS[2])
+                ),
                 5.00
             )
         )

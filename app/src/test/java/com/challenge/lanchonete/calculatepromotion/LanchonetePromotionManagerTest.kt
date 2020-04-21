@@ -18,7 +18,7 @@ class LanchonetePromotionManagerTest {
 
         val sandwich = Sandwich(0, "")
         val ingredient = TestData.LIST_OF_INGREDIENTS[0]
-        sandwich.ingredients.add(ingredient)
+        sandwich.ingredients[ingredient.id] = ingredient
         sandwich.calculatePrice()
 
         val manager = LanchonetePromotionManager(

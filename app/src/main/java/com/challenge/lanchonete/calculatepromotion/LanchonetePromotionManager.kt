@@ -21,7 +21,7 @@ class LanchonetePromotionManager(
             moveToLoading()
             if (currentState.value != null) {
                 val sandwich = currentState.value as Sandwich
-                sandwich.ingredients.add(ingredient)
+                sandwich.ingredients[ingredient.id] = ingredient
                 sandwich.calculatePrice()
 
                 moveToLoaded(sandwich)

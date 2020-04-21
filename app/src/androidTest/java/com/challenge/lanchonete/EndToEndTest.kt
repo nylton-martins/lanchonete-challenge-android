@@ -21,7 +21,7 @@ class EndToEndTest {
         ActivityTestRule(MainActivity::class.java, true, false)
 
     @Test
-    fun givenLoadedMoviesWhenMovieIsClickedThenShouldDisplayMovieDetails() {
+    fun givenLoadedSandwichesWhenClickOnCreateSandwichShowNewFragment() {
 
         rule.launchActivity(Intent())
 
