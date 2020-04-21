@@ -11,7 +11,7 @@ import io.mockk.verifyOrder
 import io.reactivex.schedulers.Schedulers
 import org.junit.Test
 
-class LanchoneteCreateSandwichManagerTest {
+class LanchonetePromotionManagerTest {
 
     @Test
     fun `Given a sandwich When calculate price is called Then emit loaded state And the price of the sandwich`() {
