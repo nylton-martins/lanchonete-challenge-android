@@ -24,11 +24,9 @@ class CreateSandwichPresenterTest {
         verifySequence {
             viewMock.hideErrors()
             viewMock.hideLoading()
-            viewMock.showPrice()
+            viewMock.showPrice(0.0)
             viewMock.showIngredients(
-                IngredientListViewModel(
-                    ingredients
-                )
+                ingredients
             )
         }
     }

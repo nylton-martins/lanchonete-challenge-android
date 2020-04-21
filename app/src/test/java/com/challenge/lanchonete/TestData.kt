@@ -7,7 +7,7 @@ class TestData {
 
     companion object {
 
-        val LIST_OF_INGREDIENTS = listOf(
+        val LIST_OF_INGREDIENTS = mutableListOf(
             Ingredient(
                 1,
                 "Cheese",

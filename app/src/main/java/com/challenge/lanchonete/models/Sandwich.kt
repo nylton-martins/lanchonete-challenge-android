@@ -1,5 +1,7 @@
 package com.challenge.lanchonete.models
 
+import kotlin.math.round
+
 data class Sandwich(
     val id: Int,
     val name: String,
@@ -35,8 +37,8 @@ data class Sandwich(
         var biggestPromotion = 0.0
 
         if (hasLettuce && !hasBacon) {
-            val lighPromotion = price * 0.1
-            if (biggestPromotion < lighPromotion) biggestPromotion = lighPromotion
+            val lightPromotion = price * 0.10
+            if (biggestPromotion < lightPromotion) biggestPromotion = lightPromotion
         }
         val quantityOfMeatPromos: Int = countOfBurgers / 3
         val meatPromotion = quantityOfMeatPromos * valueOfBurger
@@ -47,5 +49,6 @@ data class Sandwich(
         if (biggestPromotion < cheesePromotion) biggestPromotion = cheesePromotion
 
         price -= biggestPromotion
+        price = round(price * 100) / 100
     }
 }
