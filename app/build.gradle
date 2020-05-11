@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.challenge.lanchonete"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues true
+            includeAndroidResources true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:${jetpackAppCompatVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
+    implementation "androidx.recyclerview:recyclerview:${androidJetpackRecyclerViewVersion}"
+    implementation "com.google.android.material:material:${androidJetpackVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxJavaAndroidVersion}"
+
+    testImplementation "androidx.test:core:${androidTestCoreVersion}"
+    testImplementation "androidx.test:runner:${supportTestRunnerVersion}"
+    testImplementation "androidx.test.ext:junit:${androidJUnitVersion}"
+    testImplementation "androidx.test:rules:${supportTestRulesVersion}"
+    testImplementation "io.mockk:mockk:${mockkVersion}"
+    testImplementation "org.robolectric:robolectric:${robolectricVersion}"
+    testImplementation "androidx.test.espresso:espresso-core:${espressoVersion}"
+    testImplementation "androidx.test.espresso:espresso-contrib:${espressoVersion}"
+
+    androidTestImplementation "androidx.test:core:${androidTestCoreVersion}"
+    androidTestImplementation "androidx.test:runner:${supportTestRunnerVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${androidJUnitVersion}"
+    androidTestImplementation "androidx.test:rules:${supportTestRulesVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:${espressoVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:${espressoVersion}"
+}
